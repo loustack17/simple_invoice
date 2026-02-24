@@ -1,5 +1,7 @@
 # Typst Invoice Template
 
+![demo](./assets/simple-invoice.png)
+
 ## Build
 
 ```bash
@@ -39,4 +41,4 @@ typst compile invoice.typ
 - Service and detail text wraps automatically based on column width.
 - Detail rows grow or shrink with content length.
 - No fixed 2-line padding is reserved for short text.
-- Summary and payment sections flow downward automatically after the table.
+- Summary and payment sections flow downward automatically after the tabl-.
