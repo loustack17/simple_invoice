@@ -17,13 +17,19 @@
   }
 }
 
+#let service_amount(service) = service.rate * service.quantity - service.discount
+
 #let service_row(service) = (
   kind: "service",
   service: service.description,
   rate: fmt_currency(service.rate) + " / " + service.rate_unit,
   quantity: str(service.quantity),
   discount: fmt_currency(service.discount),
-  payment_due: none,
+  payment_due: if service.at("details", default: ()).len() == 0 {
+    fmt_currency(service_amount(service))
+  } else {
+    none
+  },
 )
 
 #let detail_row(detail, rate, marker) = (
@@ -47,7 +53,7 @@
 }
 
 #let calc_total(services) = {
-  services.map(s => s.rate * s.quantity - s.discount).sum(default: 0)
+  services.map(service_amount).sum(default: 0)
 }
 
 #let build_invoice_view(data) = {

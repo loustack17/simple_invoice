@@ -26,6 +26,7 @@ typst compile invoice.typ
 - Service fields use numeric values (`rate: 100`, `quantity: 24`, `discount: 0`).
 - Add `rate_unit` per service (e.g., `"hr"`).
 - Detail rows only need `text` and `quantity`; amounts are auto-calculated from the service rate.
+- Detail rows are optional; if a service has no `details`, its own row shows the payment amount.
 - Add multiple services in `table.services` (tuple of service objects).
 - Change detail list marker in `module/data.typ` (`table.detail_marker`).
 - Adjust typography, colors, spacing, or widths in `module/config.typ`.
